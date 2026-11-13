@@ -23,7 +23,7 @@ dados = {
 }
 
 processo = subprocess.Popen([
-    "/mnt/dados/IA/llama.cpp/llama-server",
+    "/mnt/dados/IA/llama.cpp/build/bin/llama-server",
     "-m", "/mnt/dados/IA/Models/qwen2.5-coder-3b-instruct-q5_k_m.gguf",
     "-t", "4",
     "-c", "4096",
