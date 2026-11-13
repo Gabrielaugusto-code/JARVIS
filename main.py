@@ -3,6 +3,7 @@
 import subprocess
 import requests
 import time
+import json
 
 # vai ir no servidor junto com o modelo
 
@@ -10,17 +11,6 @@ url_Comunicacao = "http://localhost:8080/v1/chat/completions"
 url_Iniciado = "http://localhost:8080/health"
 
 Entrada = input("Diga: ")
-
-dados = {
-    "messages": [
-        {
-            "role": "user",
-            "content": Entrada
-        }
-    ],
-    "temperature": 0.5, # diversidade da resposta
-    "max_tokens": 2048 # tokens de saida
-}
 
 processo = subprocess.Popen([
     "/mnt/dados/IA/llama.cpp/build/bin/llama-server",
@@ -31,11 +21,64 @@ processo = subprocess.Popen([
     "--port", "8080"
 ])
 
+mensagem = [
+    {
+        "role": "user",
+        "content": Entrada
+    }
+]
+
+SCHEMA = {
+    "type": "object",
+    "properties": {
+        "titulo": {
+            "type": "string"
+        },
+        "conteudo": {
+            "type": "string"
+        },
+        "confianca": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "titulo",
+        "conteudo",
+        "confianca"
+    ],
+    "additionalProperties": False
+}
+
+dados = {
+    "temperature": 0.5, # diversidade da resposta
+    "max_tokens": 2048, # tokens de saida
+
+    "messages": mensagem,
+
+    "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "resposta",
+            "strict": True,
+            "schema": SCHEMA
+        }
+    }
+}
+
 def sendPrompt():
     resposta = requests.post(url_Comunicacao, json=dados) #envia a requisiçao a API llhama-server
     resposta.raise_for_status()
-    resultado = resposta.json() # transforma o json da ia em dicionario do python
-    print(resultado["choices"][0]["message"]["content"])
+    resultado_api = resposta.json()
+    conteudo = resultado_api["choices"][0]["message"]["content"]
+    resultado_ia = json.loads(conteudo)
+    printPrompt(resultado_ia["titulo"], resultado_ia["conteudo"], resultado_ia["confianca"])
+
+
+def printPrompt(tituloRia, conteudoRia, confiancaRia):
+    print(f"O titulo da conversa foi: {tituloRia} \n")
+    print(f"O conteudo gerado foi: {conteudoRia} \n")
+    print(f"A confiança da ia sobre essa resposta é: {confiancaRia} \n")
+
 
 def Jarvis():
     espera = True

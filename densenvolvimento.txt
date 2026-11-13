@@ -1,0 +1,23 @@
+vamos usar JSON Schema com saída estruturada do llama.cpp, mantendo o Python como controlador das ações.
+
+
+
+{
+    "role": "system",
+    content": "Contexto anterior: O usuário está estudando C. Já aprendeu variáveis, tipos int e float e funções."
+},
+
+pip install requests
+
+
+
+
+
+
+
+
+
+
+
+
+

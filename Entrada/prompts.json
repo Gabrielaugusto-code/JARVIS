@@ -1,0 +1,21 @@
+{
+    "task": "Analisar e explicar um código C",
+
+    "prompts": [
+        {
+            "id": 1,
+            "name": "analise",
+            "instruction": "Analise o código e identifique seus problemas."
+        },
+        {
+            "id": 2,
+            "name": "planejamento",
+            "instruction": "Com base na análise anterior, proponha melhorias."
+        },
+        {
+            "id": 3,
+            "name": "resposta",
+            "instruction": "Organize as informações anteriores em uma resposta final."
+        }
+    ]
+}

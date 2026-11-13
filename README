@@ -1,11 +1,21 @@
-pip install requests
+Meu modelo de agente de IA
+
+Agente JARVIS 
+
+Sobre: Jarvis é um agente de IA leve e eficiente, feito para trabalhar com modelos pequenos e limitados em programação, seu objetivo é trabalhar como um programador real recebendo um problema e entregando uma solução completa, segura e validada com base na proposta inicial. 
+
+Linguagem: Python 
+
+Jarvis 0.1: Quero que nessa versão leia um arquivo estruturado contendo vários prompts e execute eles em sequência chamando a lhama.server e retorne o resultado total.
+
+Jarvis 0.2: O agente possui todas as funcionalidades do agente anterior, no entanto, retorna uma resposta estruturada com base no que foi pedido e gerencia o contexto da ia, podendo resumir o contexto atual e limpar o contexto dela.
 
 
-{
-            "role": "system",
-            "content": "Contexto anterior: O usuário está estudando C. Já aprendeu variáveis, tipos int e float e funções."
-        },
+Jarvis 0.3: O agente possui todas as funcionalidades do agente anterior, no entanto,  poderá requisitar informações na internet, criar salvar, e apagar arquivos em determinadas pastas.
 
+Jarvis 0.4: O agente possui todas as funcionalidades do agente anterior, no entanto,  poderá compilar códigos e ver a saída do compilador com o docker.
+
+Jarvis 0.5: O agente possui todas as funcionalidades do agente anterior, no entanto,  poderá testar a aplicação.
 
 
 
