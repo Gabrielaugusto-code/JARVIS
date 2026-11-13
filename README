@@ -1,0 +1,15 @@
+pip install requests
+
+
+{
+            "role": "system",
+            "content": "Contexto anterior: O usuário está estudando C. Já aprendeu variáveis, tipos int e float e funções."
+        },
+
+
+
+
+
+
+
+
