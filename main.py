@@ -54,15 +54,6 @@ dados = {
     "max_tokens": 2048, # tokens de saida
 
     "messages": mensagem,
-
-    "response_format": {
-        "type": "json_schema",
-        "json_schema": {
-            "name": "resposta",
-            "strict": True,
-            "schema": SCHEMA
-        }
-    }
 }
 
 def sendPrompt():
@@ -71,8 +62,8 @@ def sendPrompt():
     resultado_api = resposta.json()
     conteudo = resultado_api["choices"][0]["message"]["content"]
     print(conteudo)
-    resultado_ia = json.loads(conteudo)
-    printPrompt(resultado_ia["titulo"], resultado_ia["conteudo"], resultado_ia["confianca"])
+    #resultado_ia = json.loads(conteudo)
+    #printPrompt(resultado_ia["titulo"], resultado_ia["conteudo"], resultado_ia["confianca"])
 
 
 def printPrompt(tituloRia, conteudoRia, confiancaRia):
