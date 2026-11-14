@@ -70,6 +70,7 @@ def sendPrompt():
     resposta.raise_for_status()
     resultado_api = resposta.json()
     conteudo = resultado_api["choices"][0]["message"]["content"]
+    print(conteudo)
     resultado_ia = json.loads(conteudo)
     printPrompt(resultado_ia["titulo"], resultado_ia["conteudo"], resultado_ia["confianca"])
 
